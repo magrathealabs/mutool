@@ -7,6 +7,6 @@ script:
   - bundle install
   - bundle exec rspec
 before_install:
-  - sudo add-apt-repository ppa:ubuntuhandbook1/apps
-  - sudo apt-get update
+  - sudo add-apt-repository ppa:ubuntuhandbook1/apps -y
+  - sudo apt-get update -y
   - sudo apt-get install -y mupdf mupdf-tools
