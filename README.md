@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/magrathealabs/mutool.svg?branch=master)](https://travis-ci.org/magrathealabs/mutool)
+
 # Mutool
 
 MuPDF is a lightweight PDF, XPS, and E-book viewer.

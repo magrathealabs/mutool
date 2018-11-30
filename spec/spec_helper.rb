@@ -16,8 +16,4 @@ RSpec.configure do |config|
   config.before(:each) do
     FileUtils.rm(Dir.glob('spec/tmp/*.png'))
   end
-
-  config.after(:each) do
-    FileUtils.rm(Dir.glob('spec/tmp/*.png'))
-  end
 end
