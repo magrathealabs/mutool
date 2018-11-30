@@ -2,4 +2,11 @@ sudo: false
 language: ruby
 rvm:
   - 2.5.0
-before_install: gem install bundler -v 1.16.2
+script:
+  - gem install bundler -v 1.16.2
+  - bundle install
+  - bundle exec rspec
+before_install:
+  - sudo add-apt-repository ppa:ubuntuhandbook1/apps -y
+  - sudo apt-get update -y
+  - sudo apt-get install -y mupdf mupdf-tools
