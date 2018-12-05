@@ -3,6 +3,7 @@ require 'pathname'
 RSpec.describe Mutool do
   let(:tmp) { Pathname.new('.').join('spec', 'tmp') }
   let(:pattern) { 'spec/tmp/convert-test-%d.png' }
+  let(:password_pattern) { 'spec/tmp/convert-test-password-%d.png' }
 
   it 'has a version number' do
     expect(Mutool::VERSION).not_to be nil
@@ -18,7 +19,7 @@ RSpec.describe Mutool do
 
   it '#convert with password' do
     expect(tmp.join('convert-test-password-1.png').exist?).to be_falsey
-    Mutool.convert('spec/resources/pdf_with_password.pdf', { F: 'png', p: 'abc', o: pattern })
+    Mutool.convert('spec/resources/pdf_with_password.pdf', { F: 'png', p: 'abc', o: password_pattern })
     expect(tmp.join('convert-test-password-1.png').exist?).to be_truthy
   end
 end
