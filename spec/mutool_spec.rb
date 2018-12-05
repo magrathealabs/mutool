@@ -13,7 +13,7 @@ RSpec.describe Mutool do
     Mutool.convert('spec/resources/pdf.pdf', { F: 'png', p: "'; touch abc.png;'", o: pattern })
     expect(tmp.join('convert-test-1.png').exist?).to be_truthy
     expect(File.exist?('abc.png')).to be_falsey
-    expect(tmp.join('abc.png').exist?).too be_falsey
+    expect(tmp.join('abc.png').exist?).to be_falsey
   end
 
   it '#convert with password' do
