@@ -34,4 +34,16 @@ RSpec.describe Mutool do
       expect(Mutool.convert(output, { F: 'png', o: pattern }).success?).to be_truthy
     end
   end
+
+  describe('#has_mutool?') do
+    it 'true if has mutool' do
+      expect(Mutool.has_mutool?).to be_truthy
+    end
+
+    it 'false if do not has mutool' do
+      Mutool.has_mutool = nil
+      Mutool.mutool_path = 'not_mutool'
+      expect(Mutool.has_mutool?).to be_falsey
+    end
+  end
 end

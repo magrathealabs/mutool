@@ -15,5 +15,7 @@ RSpec.configure do |config|
 
   config.before(:each) do
     FileUtils.rm(Dir.glob('spec/tmp/*.png'))
+    Mutool.mutool_path = 'mutool'
+    Mutool.has_mutool = nil
   end
 end
