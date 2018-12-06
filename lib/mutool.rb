@@ -11,6 +11,7 @@ class Mutool
       run(['mutool', 'convert', flags(ops), input, pages].flatten)
     end
 
+    # https://mupdf.com/docs/manual-mutool-clean.html
     def clean(input, output, pages='1-N', ops)
       run(['mutool', 'clean', flags(ops), input, output, pages].flatten)
     end
@@ -19,6 +20,7 @@ class Mutool
 
     def run(command = [])
       system(*command, out: File::NULL, err: File::NULL)
+      $?
     end
   end
 end
