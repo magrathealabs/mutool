@@ -31,7 +31,7 @@ RSpec.describe Mutool do
 
       Mutool.clean('spec/resources/pdf_with_password.pdf', output, p: 'abc')
 
-      expect(Mutool.convert(output, { F: 'png', o: pattern })).to be_truthy
+      expect(Mutool.convert(output, { F: 'png', o: pattern }).success?).to be_truthy
     end
   end
 end
