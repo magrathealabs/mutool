@@ -23,6 +23,12 @@ RSpec.describe Mutool do
       Mutool.convert('spec/resources/pdf_with_password.pdf', { F: 'png', p: 'abc', o: password_pattern })
       expect(tmp.join('convert-test-password-1.png').exist?).to be_truthy
     end
+
+    it '#convert without mutool' do
+      Mutool.has_mutool = nil
+      Mutool.mutool_path = 'not_mutool'
+      expect { Mutool.convert('spec/resources/pdf_with_password.pdf', {}) }.to raise_error('mutool not found')
+    end
   end
 
   describe('#clean') do
@@ -32,6 +38,12 @@ RSpec.describe Mutool do
       Mutool.clean('spec/resources/pdf_with_password.pdf', output, p: 'abc')
 
       expect(Mutool.convert(output, { F: 'png', o: pattern }).success?).to be_truthy
+    end
+
+    it '#clean without mutool' do
+      Mutool.has_mutool = nil
+      Mutool.mutool_path = 'not_mutool'
+      expect { Mutool.clean('spec/resources/pdf_with_password.pdf', 'hehe.pdf', p: 'abc') }.to raise_error('mutool not found')
     end
   end
 

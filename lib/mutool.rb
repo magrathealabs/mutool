@@ -14,11 +14,13 @@ class Mutool
 
     # Reference: https://mupdf.com/docs/manual-mutool-convert.html
     def convert(input, pages='1-N', ops)
+      raise 'mutool not found' unless has_mutool?
       run([mutool_path, 'convert', flags(ops), input, pages].flatten)
     end
 
     # https://mupdf.com/docs/manual-mutool-clean.html
     def clean(input, output, pages='1-N', ops)
+      raise 'mutool not found' unless has_mutool?
       run([mutool_path, 'clean', flags(ops), input, output, pages].flatten)
     end
 
