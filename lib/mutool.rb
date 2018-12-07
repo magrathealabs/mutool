@@ -1,4 +1,6 @@
 require 'mutool/version'
+require 'thread'
+require 'open3'
 
 class Mutool
   class << Mutool
@@ -10,6 +12,11 @@ class Mutool
 
     def flags(ops = {})
       ops.map { |key, value| ["-#{key}", value] }
+    end
+
+    def version
+      raise 'mutool not found' unless has_mutool?
+      @version ||= version_str.gsub("\n", '').split(' ').last
     end
 
     # Reference: https://mupdf.com/docs/manual-mutool-convert.html
@@ -25,6 +32,12 @@ class Mutool
     end
 
     private
+
+    def version_str
+      _, _, stderr, thread = Open3.popen3('mutool -v')
+      thread.join
+      stderr.read
+    end
 
     def mutool_path
       @mutool_path ||= ENV["MUTOOL_PATH"] || 'mutool'

@@ -9,6 +9,10 @@ RSpec.describe Mutool do
     expect(Mutool::VERSION).not_to be nil
   end
 
+  it 'mutool version' do
+    expect(Mutool.version).to eq('1.12.0')
+  end
+
   describe('#convert') do
     it '#convert' do
       expect(tmp.join('convert-test-1.png').exist?).to be_falsey
