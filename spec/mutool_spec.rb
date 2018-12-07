@@ -10,7 +10,7 @@ RSpec.describe Mutool do
   end
 
   it 'mutool version' do
-    expect(Mutool.version.include?('1.1')).to be_truthy
+    expect(Mutool.version.to_f > 1.10).to be_truthy
   end
 
   describe('#convert') do
