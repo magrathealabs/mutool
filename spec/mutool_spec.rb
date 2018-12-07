@@ -9,8 +9,8 @@ RSpec.describe Mutool do
     expect(Mutool::VERSION).not_to be nil
   end
 
-  it 'mutool version' do
-    expect(Mutool.version.to_f > 1.10).to be_truthy
+  it 'mutool version ~> 1.10a' do
+    expect(Mutool.version.to_f >= 1.1).to be_truthy
   end
 
   describe('#convert') do
